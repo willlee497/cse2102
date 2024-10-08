@@ -1,4 +1,5 @@
 lab 3:
+
 Step1:
 Run the command to generate the project structure:
 mvn archetype:generate -DgroupId=com.example -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
