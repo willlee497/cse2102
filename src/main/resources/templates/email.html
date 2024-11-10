@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Validation</title>
+</head>
+<body>
+    <h2>Email Validation</h2>
+    <form action="#" th:action="@{/email-validation}" method="post">
+        <label for="email">Enter Email:</label>
+        <input type="text" id="email" name="email"/>
+        <button type="submit">Validate Email</button>
+    </form>
+    <p th:if="${result != null}">Result: <span th:text="${result}"></span></p>
+</body>
+</html>

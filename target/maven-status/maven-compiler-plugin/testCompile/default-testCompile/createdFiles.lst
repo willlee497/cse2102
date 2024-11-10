@@ -1,0 +1,5 @@
+com/example/demo/controller/WebControllerTest.class
+com/example/demo/controller/ValidationControllerTest.class
+com/example/demo/DemoApplicationTests.class
+com/example/demo/controller/PasswordControllerTest.class
+com/example/demo/controller/QuizControllerTest.class

@@ -1,0 +1,5 @@
+/workspaces/Lab5/src/test/java/com/example/demo/DemoApplicationTests.java
+/workspaces/Lab5/src/test/java/com/example/demo/controller/PasswordControllerTest.java
+/workspaces/Lab5/src/test/java/com/example/demo/controller/QuizControllerTest.java
+/workspaces/Lab5/src/test/java/com/example/demo/controller/ValidationControllerTest.java
+/workspaces/Lab5/src/test/java/com/example/demo/controller/WebControllerTest.java
