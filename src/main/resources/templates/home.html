@@ -2,14 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home Page</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to external CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0f0e17;
+            color: #f0f0f0;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff66c4;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ff66c4, 0 0 20px #ff66c4;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-list a {
+            display: block;
+            background-color: #1a1a2e;
+            color: #61dafb;
+            text-decoration: none;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
+            font-size: 1.2em;
+        }
+
+        .feature-list a:hover {
+            background-color: #16213e;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 102, 196, 0.5);
+        }
+    </style>
 </head>
 <body>
     <h2>Welcome to the Spring Boot Demo!</h2>
-    <p>Please choose one of the functionalities below:</p>
-    <ul>
-        <li><a href="/password-check">Password Quality Check</a></li>
-        <li><a href="/email-validation">Email Validation</a></li>
-        <li><a href="/quiz">Quiz Questions</a></li>
-    </ul>
+    <p style="text-align: center; font-size: 1.3em;">Choose one of the features below to explore:</p>
+    <div class="feature-list">
+        <a href="/password-check">Password Quality Check</a>
+        <a href="/email-validation">Email Validation</a>
+        <a href="/quiz">Quiz Questions</a>
+    </div>
 </body>
 </html>

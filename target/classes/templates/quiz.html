@@ -1,48 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Quiz Questions</title>
+    <title>Interactive Quiz Questions</title>
     <link rel="stylesheet" href="/css/styles.css"> <!-- Link to external CSS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h2 {
-            text-align: center;
-            color: #007BFF;
-        }
-        .quiz-question {
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .quiz-question p {
-            font-weight: bold;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            background: #007BFF;
-            color: #fff;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 3px;
-        }
-    </style>
 </head>
 <body>
-    <h2>Quiz Questions</h2>
-    <div id="quiz-container"></div>
+    <h2>Interactive Quiz Questions</h2>
+    <div id="quiz-container" class="quiz-container"></div>
+    <button id="submit-quiz" style="margin-top: 20px;">Submit Quiz</button>
+    <div id="quiz-result"></div>
 
     <script>
         $(document).ready(function () {
@@ -52,14 +19,21 @@
                 method: "GET",
                 success: function (data) {
                     // Iterate over each question and add it to the page
-                    data.forEach(function (question) {
+                    data.forEach(function (question, index) {
                         let questionHtml = '<div class="quiz-question">';
-                        questionHtml += '<p>' + question.question + '</p>';
-                        questionHtml += '<ul>';
-                        question.options.forEach(function (option) {
-                            questionHtml += '<li>' + option + '</li>';
+                        questionHtml += '<p><b>' + question.question + '</b></p>';
+                        questionHtml += '<form>';
+
+                        question.options.forEach(function (option, optionIndex) {
+                            questionHtml += `
+                                <div>
+                                    <input type="radio" name="question-${index}" id="question-${index}-option-${optionIndex}" value="${option}">
+                                    <label for="question-${index}-option-${optionIndex}">${option}</label>
+                                </div>
+                            `;
                         });
-                        questionHtml += '</ul>';
+
+                        questionHtml += '</form>';
                         questionHtml += '</div>';
                         
                         // Append question to the container
@@ -70,8 +44,29 @@
                     $("#quiz-container").append('<p>Unable to load quiz questions. Please try again later.</p>');
                 }
             });
+
+            // Handle quiz submission
+            $('#submit-quiz').click(function () {
+                let correctAnswers = [
+                    "Mario",  // Capital of France
+                    "Grand Theft Auto",   // Vice City
+                    "Level 256", // Pac-Man
+                    "Fallout", // War quote
+                    "The Witcher" // Monster Hunter
+                ];
+                
+                let score = 0;
+                correctAnswers.forEach(function (answer, index) {
+                    let selectedOption = $(`input[name="question-${index}"]:checked`).val();
+                    if (selectedOption === answer) {
+                        score++;
+                    }
+                });
+
+                let resultMessage = `You scored ${score} out of ${correctAnswers.length}`;
+                $("#quiz-result").text(resultMessage);
+            });
         });
     </script>
 </body>
 </html>
-
