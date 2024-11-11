@@ -1,4 +1,4 @@
-# Spring Boot Quiz Application
+# Spring Boot Application
 
 This is a simple Spring Boot application that serves a quiz with questions and answers using Thymeleaf templates and REST APIs. Users can access different features like checking password quality, validating emails, and taking a quiz.
 
