@@ -16,30 +16,30 @@ public class WebControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldShowHomePage() throws Exception {
+    public void testGetHomePage() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"));
     }
 
     @Test
-    public void shouldShowPasswordCheckPage() throws Exception {
-        mockMvc.perform(get("/password-check"))
+    public void testGetPasswordCheckerPage() throws Exception {
+        mockMvc.perform(get("/password-checker"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("password"));
+                .andExpect(view().name("password-checker"));
     }
 
     @Test
-    public void shouldShowEmailValidationPage() throws Exception {
-        mockMvc.perform(get("/email-validation"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("email"));
-    }
-
-    @Test
-    public void shouldShowQuizPage() throws Exception {
+    public void testGetQuizPage() throws Exception {
         mockMvc.perform(get("/quiz"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("quiz"));
+    }
+
+    @Test
+    public void testGetEmailValidatorPage() throws Exception {
+        mockMvc.perform(get("/email-validator"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("email-validator"));
     }
 }

@@ -1,37 +1,98 @@
 package com.example.demo.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
+@RequestMapping("/api/password")
 public class PasswordController {
 
-    @GetMapping("/api/password-quality")
-    public ResponseEntity<String> checkPasswordQuality(@RequestParam String password) {
-        String message = evaluatePasswordQuality(password);
-        return new ResponseEntity<>(message, HttpStatus.OK);
+    @PostMapping("/check")
+    public PasswordQualityResponse checkPasswordQuality(@RequestBody PasswordRequest passwordRequest) {
+        String password = passwordRequest.getPassword();
+        PasswordQualityResponse response = new PasswordQualityResponse();
+
+        // Password quality evaluation logic
+        if (password.length() >= 8) {
+            response.getMessages().add("Password length is sufficient.");
+            response.setScore(response.getScore() + 1);
+        } else {
+            response.getMessages().add("Password length is too short (must be at least 8 characters).");
+        }
+
+        if (password.matches(".*[A-Z].*")) {
+            response.getMessages().add("Password contains an uppercase letter.");
+            response.setScore(response.getScore() + 1);
+        } else {
+            response.getMessages().add("Password should contain at least one uppercase letter.");
+        }
+
+        if (password.matches(".*[a-z].*")) {
+            response.getMessages().add("Password contains a lowercase letter.");
+            response.setScore(response.getScore() + 1);
+        } else {
+            response.getMessages().add("Password should contain at least one lowercase letter.");
+        }
+
+        if (password.matches(".*[0-9].*")) {
+            response.getMessages().add("Password contains a number.");
+            response.setScore(response.getScore() + 1);
+        } else {
+            response.getMessages().add("Password should contain at least one number.");
+        }
+
+        if (password.matches(".*[^A-Za-z0-9].*")) {
+            response.getMessages().add("Password contains a special character.");
+            response.setScore(response.getScore() + 1);
+        } else {
+            response.getMessages().add("Password should contain at least one special character.");
+        }
+
+        response.setQuality(response.getScore() >= 4 ? "Strong" : "Weak");
+        return response;
     }
 
-    private String evaluatePasswordQuality(String password) {
-        int lengthScore = password.length() >= 8 ? 1 : 0;
-        int uppercaseScore = password.matches(".*[A-Z].*") ? 1 : 0;
-        int lowercaseScore = password.matches(".*[a-z].*") ? 1 : 0;
-        int numberScore = password.matches(".*[0-9].*") ? 1 : 0;
-        int specialCharScore = password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?].*") ? 1 : 0;
+    // Request and response DTOs
+    static class PasswordRequest {
+        private String password;
 
-        int score = lengthScore + uppercaseScore + lowercaseScore + numberScore + specialCharScore;
+        public String getPassword() {
+            return password;
+        }
 
-        switch (score) {
-            case 5:
-                return "Strong";
-            case 3:
-            case 4:
-                return "Moderate";
-            default:
-                return "Weak";
+        public void setPassword(String password) {
+            this.password = password;
+        }
+    }
+
+    static class PasswordQualityResponse {
+        private int score = 0;
+        private String quality;
+        private List<String> messages = new ArrayList<>();
+
+        public int getScore() {
+            return score;
+        }
+
+        public void setScore(int score) {
+            this.score = score;
+        }
+
+        public String getQuality() {
+            return quality;
+        }
+
+        public void setQuality(String quality) {
+            this.quality = quality;
+        }
+
+        public List<String> getMessages() {
+            return messages;
+        }
+
+        public void setMessages(List<String> messages) {
+            this.messages = messages;
         }
     }
 }

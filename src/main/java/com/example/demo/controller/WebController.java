@@ -12,14 +12,14 @@ public class WebController {
         return "home";  // Looks for home.html in templates folder
     }
 
-    @GetMapping("/password-check")
-    public String showPasswordForm() {
-        return "password";  // Looks for password.html in templates folder
+    @GetMapping("/password-checker")
+    public String getPasswordCheckerPage() {
+        return "password-checker"; // Ensure this matches the HTML file name
     }
 
-    @GetMapping("/email-validation")
-    public String showEmailForm() {
-        return "email";  // Looks for email.html in templates folder
+    @GetMapping("/email-validator")
+    public String getEmailValidatorPage() {
+        return "email-validator"; // Ensure this matches the HTML file name
     }
 
     @GetMapping("/quiz")
