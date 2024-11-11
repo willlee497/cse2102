@@ -1,29 +1,28 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class WebController {
 
     @GetMapping("/")
-    public String showHomePage() {
-        return "home";  // Looks for home.html in templates folder
-    }
-
-    @GetMapping("/password-checker")
-    public String getPasswordCheckerPage() {
-        return "password-checker"; // Ensure this matches the HTML file name
+    public String getHomePage() {
+        return "home"; // Make sure "home.html" is available in the templates folder
     }
 
     @GetMapping("/email-validator")
     public String getEmailValidatorPage() {
-        return "email-validator"; // Ensure this matches the HTML file name
+        return "email-validator"; // The HTML template name
+    }
+
+    @GetMapping("/password-checker")
+    public String getPasswordCheckerPage() {
+        return "password-checker"; // The HTML template name
     }
 
     @GetMapping("/quiz")
-    public String showQuizPage(Model model) {
-        return "quiz";  // Looks for quiz.html in templates folder
+    public String getQuizPage() {
+        return "quiz"; // The HTML template name
     }
 }

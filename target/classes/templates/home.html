@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="/css/styles.css"> <!-- Link to external CSS -->
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0f0e17;
-            color: #f0f0f0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #041f1e;
+            color: #00ff00;
             max-width: 900px;
             margin: 50px auto;
             padding: 20px;
@@ -15,46 +17,74 @@
             font-size: 1.1em;
         }
 
-        h2 {
+        h1 {
             text-align: center;
-            color: #ff66c4;
+            color: #00ff00;
             margin-bottom: 30px;
-            text-shadow: 0 0 10px #ff66c4, 0 0 20px #ff66c4;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
         }
 
-        .feature-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .home-container {
+            background: linear-gradient(135deg, #0c3d3a, #032926);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0 auto;
+            max-width: 600px;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.7);
+            border: 2px solid #00ff00;
+            text-align: center;
+            position: relative;
         }
 
-        .feature-list a {
-            display: block;
-            background-color: #1a1a2e;
-            color: #61dafb;
-            text-decoration: none;
-            padding: 15px 25px;
-            margin: 10px;
-            border-radius: 10px;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
-            font-size: 1.2em;
+        .home-links {
+            list-style: none;
+            padding: 0;
         }
 
-        .feature-list a:hover {
-            background-color: #16213e;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 102, 196, 0.5);
+        .home-links li {
+            margin: 20px 0;
+        }
+
+        .home-link-btn {
+            background-color: #00ff00;
+            color: #041f1e;
+            padding: 15px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.3em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+        }
+
+        .home-link-btn:hover {
+            background-color: #00cc00;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+        }
+
+        .terminal-frame {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px solid #00ff00;
+            border-radius: 25px;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <h2>Welcome to the Spring Boot Demo!</h2>
-    <p style="text-align: center; font-size: 1.3em;">Choose one of the features below to explore:</p>
-    <div class="feature-list">
-        <a href="/password-check">Password Quality Check</a>
-        <a href="/email-validation">Email Validation</a>
-        <a href="/quiz">Quiz Questions</a>
+    <h1>Welcome to the Application Portal</h1>
+    <div class="home-container">
+        <div class="terminal-frame"></div>
+        <ul class="home-links">
+            <li><a href="/password-checker"><button class="home-link-btn">Password Quality Check</button></a></li>
+            <li><a href="/email-validator"><button class="home-link-btn">Email Validator</button></a></li>
+            <li><a href="/quiz"><button class="home-link-btn">Take the Quiz</button></a></li>
+        </ul>
     </div>
 </body>
 </html>
