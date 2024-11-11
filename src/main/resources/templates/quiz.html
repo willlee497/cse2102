@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Interactive Quiz Questions</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to external CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Interactive Quiz Questions</h2>
+    <div id="quiz-container" class="quiz-container"></div>
+    <button id="submit-quiz" style="margin-top: 20px;">Submit Quiz</button>
+    <div id="quiz-result"></div>
+
+    <script>
+        $(document).ready(function () {
+            // Make an AJAX call to fetch quiz questions
+            $.ajax({
+                url: "/api/quiz/questions",
+                method: "GET",
+                success: function (data) {
+                    // Iterate over each question and add it to the page
+                    data.forEach(function (question, index) {
+                        let questionHtml = '<div class="quiz-question">';
+                        questionHtml += '<p><b>' + question.question + '</b></p>';
+                        questionHtml += '<form>';
+
+                        question.options.forEach(function (option, optionIndex) {
+                            questionHtml += `
+                                <div>
+                                    <input type="radio" name="question-${index}" id="question-${index}-option-${optionIndex}" value="${option}">
+                                    <label for="question-${index}-option-${optionIndex}">${option}</label>
+                                </div>
+                            `;
+                        });
+
+                        questionHtml += '</form>';
+                        questionHtml += '</div>';
+                        
+                        // Append question to the container
+                        $("#quiz-container").append(questionHtml);
+                    });
+                },
+                error: function () {
+                    $("#quiz-container").append('<p>Unable to load quiz questions. Please try again later.</p>');
+                }
+            });
+
+            // Handle quiz submission
+            $('#submit-quiz').click(function () {
+                let correctAnswers = [
+                    "Jupiter",             // Largest planet in our solar system
+                    "Leonardo da Vinci",   // Painted the Mona Lisa
+                    "Canberra",            // Capital city of Australia
+                    "Oxygen",              // Chemical symbol 'O'
+                    "Mount Everest"        // Tallest mountain in the world
+                ];
+                
+                let score = 0;
+                correctAnswers.forEach(function (answer, index) {
+                    let selectedOption = $(`input[name="question-${index}"]:checked`).val();
+                    // Check if selected option matches the correct answer
+                    if (selectedOption && selectedOption === answer) {
+                        score++;
+                    }
+                });
+
+                let resultMessage = `You scored ${score} out of ${correctAnswers.length}`;
+                $("#quiz-result").text(resultMessage);
+            });
+        });
+    </script>
+</body>
+</html>
