@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.QuizQuestion;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,29 +17,29 @@ public class QuizController {
         List<QuizQuestion> quizQuestions = new ArrayList<>();
 
         quizQuestions.add(new QuizQuestion(
-                "What is the name of the plumber character created by Nintendo?",
-                new String[]{"Mario", "Luigi", "Wario", "Toad"},
-                "Mario"));
+                "What is the smallest country in the world by area?",
+                new String[]{"Monaco", "Vatican City", "San Marino", "Liechtenstein"},
+                "Vatican City"));
 
         quizQuestions.add(new QuizQuestion(
-                "Which video game series features the fictional city of Vice City?",
-                new String[]{"Grand Theft Auto", "Saints Row", "Watch Dogs", "Mafia"},
-                "Grand Theft Auto"));
+                "Which element has the chemical symbol 'Au'?",
+                new String[]{"Silver", "Oxygen", "Gold", "Argon"},
+                "Gold"));
 
         quizQuestions.add(new QuizQuestion(
-                "What is the highest level a player can reach in Pac-Man?",
-                new String[]{"Level 99", "Level 256", "Level 150", "Level 300"},
-                "Level 256"));
+                "Who wrote the play 'Romeo and Juliet'?",
+                new String[]{"William Shakespeare", "Charles Dickens", "Jane Austen", "Leo Tolstoy"},
+                "William Shakespeare"));
 
         quizQuestions.add(new QuizQuestion(
-                "Which game is known for the quote 'War. War never changes.'?",
-                new String[]{"Fallout", "Call of Duty", "Battlefield", "Halo"},
-                "Fallout"));
+                "What is the capital city of Canada?",
+                new String[]{"Toronto", "Vancouver", "Montreal", "Ottawa"},
+                "Ottawa"));
 
         quizQuestions.add(new QuizQuestion(
-                "In which game does a character named Geralt hunt monsters for a living?",
-                new String[]{"The Witcher", "Dark Souls", "Bloodborne", "Skyrim"},
-                "The Witcher"));
+                "Which planet is known as the 'Red Planet'?",
+                new String[]{"Earth", "Mars", "Jupiter", "Venus"},
+                "Mars"));
 
         return quizQuestions;
     }
