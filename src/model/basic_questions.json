@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "question": "Who is the longest-reigning UFC champion of all time?",
+    "answers": [
+      { "answer": "Anderson Silva", "isCorrect": true },
+      { "answer": "Jon Jones", "isCorrect": false },
+      { "answer": "Georges St-Pierre", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Who is the current UFC Lightweight Champion as of 2024?",
+    "answers": [
+      { "answer": "Charles Oliveira", "isCorrect": false },
+      { "answer": "Islam Makhachev", "isCorrect": true },
+      { "answer": "Dustin Poirier", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Who has the most wins in UFC Welterweight title defenses?",
+    "answers": [
+      { "answer": "Kamaru Usman", "isCorrect": false },
+      { "answer": "Matt Hughes", "isCorrect": false },
+      { "answer": "Georges St-Pierre", "isCorrect": true },
+      { "answer": "Tyron Woodley", "isCorrect": false }
+    ]
+  }
+]
