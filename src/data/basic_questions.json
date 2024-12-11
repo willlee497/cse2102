@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "question": "Which boxer is known as 'The Greatest'?",
+    "answers": [
+      { "answer": "Muhammad Ali", "isCorrect": true },
+      { "answer": "Mike Tyson", "isCorrect": false },
+      { "answer": "Floyd Mayweather", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is Floyd Mayweather's nickname?",
+    "answers": [
+      { "answer": "Money", "isCorrect": true },
+      { "answer": "Pretty Boy", "isCorrect": false },
+      { "answer": "The Best Ever", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Which boxer was known as 'Iron Mike'?",
+    "answers": [
+      { "answer": "Mike Tyson", "isCorrect": true },
+      { "answer": "Muhammad Ali", "isCorrect": false },
+      { "answer": "Gervonta Davis", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is Gervonta Davis's nickname?",
+    "answers": [
+      { "answer": "Tank", "isCorrect": true },
+      { "answer": "The Problem", "isCorrect": false },
+      { "answer": "Big Time", "isCorrect": false }
+    ]
+  }
+]
+

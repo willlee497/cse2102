@@ -1,0 +1,37 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  background-image: url('../public/boxing-ring.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.btn {
+  @apply font-bold py-3 px-6 rounded-full text-lg transition-all duration-300 transform hover:scale-105 inline-block text-center;
+  min-width: 200px;
+}
+
+.btn-primary {
+  @apply bg-red-600 text-white shadow-lg hover:bg-red-700;
+}
+
+.btn-secondary {
+  @apply bg-gray-700 text-white shadow-lg hover:bg-gray-600;
+}
+
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
